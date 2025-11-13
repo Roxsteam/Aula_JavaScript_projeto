@@ -1,4 +1,12 @@
+//Cotação de moedas do dia
+const USD = 4.87
+const EUR = 5.32
+const GBP = 6.08
+
+// Obtendo os elementos do formulário.
+const form = document.querySelector("form")
 const amount = document.querySelector("#amount")
+const currency = document.querySelector("#currency")
 
 // Manipulando o input amount para receber somente números
 amount.addEventListener("input", () => {
@@ -10,3 +18,31 @@ const hasCharactersRegex = /\D+/g
 amount.value = amount.value.replace(hasCharactersRegex, "")})
 
 // Na etapa acima, o input está validado para receber somente números. Ocorre que, quando se digita uma letra, ela será substituida por nada através do replace, dando a impressão de que nada foi digitado. Desta forma, recebe-se somente números no input.
+
+
+//Recuperando o valor selecionado pelo usuário.
+// Capturando o evento de submit (enviar) do formulário.
+form.onsubmit = (event) => {
+  event.preventDefault() 
+// Switch para verificar qual moeda foi selecionada
+switch(currency.value) {
+case "USD": 
+    convertCurrency(amount.value, USD, "US$")
+    break
+ case "EUR": 
+    convertCurrency(amount.value, EUR, "€")
+    break  
+    
+  case "GBP": 
+    convertCurrency(amount.value, GBP, "£")
+    break  
+}
+} 
+
+// event.preventDefault() serve para evitar que o formulário seja enviado e a página recarregada. Desta forma, podemos manipular os dados do formulário com JavaScript sem que a página seja recarregada.
+
+//Função para converter a moeda
+
+function convertCurrency(amount, price, symbol){
+  console.log(amount, price, symbol)
+}

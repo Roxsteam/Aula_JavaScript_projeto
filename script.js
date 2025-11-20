@@ -47,8 +47,8 @@ case "USD":
 
 function convertCurrency(amount, price, symbol){
   try {
-
-    description.textContent = `${symbol} 1 = ${price}`
+    // Exibindo a cotacao da moeda selecionada.
+    description.textContent = `${symbol} 1 = ${formatCurrencyBRL(price)}`
     
 // Aplica a classe que exibe o footer para mostrar o resultado.    
 footer.classList.add("show-result")
@@ -62,4 +62,18 @@ footer.classList.remove("show-result")
 console.log(error)
 alert("Não foi possível converter. Tente novamente mais tarde.")
   }
+}
+
+// Formata a moeda em real brasileiro.
+function formatCurrencyBRL(value) {
+  // Converte para número para utilizar o toLocaleString e deixar no formato BRL (R$ 00,00).
+  return Number(value).toLocaleString("pt-BR", {
+    style: "currency",
+    currency: "BRL"
+
+
+  })
+
+
+
 }
